@@ -1,0 +1,9 @@
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    return x.toString().split("").reverse().join("") === x.toString();
+};
+//runtime:244 ms
+//memory:46.5 MB
