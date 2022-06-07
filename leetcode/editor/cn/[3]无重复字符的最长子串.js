@@ -42,30 +42,31 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring = function (s) {
     // TODO 构造子串法
-    /*let subStr = ''
+    let subStr = ''
     let maxLength = subStr.length
     for (let i = 0; i < s.length; i++) {
-        if (subStr.indexOf(s[i]) === -1) {
+        let idx = subStr.indexOf(s[i])
+        if (idx === -1) {
             subStr += s[i]
         } else {
-            subStr = subStr.substring(subStr.indexOf(s[i]) + 1, i)
+            subStr = subStr.substring(idx + 1) + s[i]
         }
         maxLength = Math.max(maxLength, subStr.length)
     }
-    return maxLength*/
-    // TODO 滑动窗口、哈希法
-    let map = new Map()
-    let maxLength = 0
-    let i = 0
-    for (let j = 0; j < s.length; j++) {
-        if (map.has(s[j]) && map.get(s[j]) >= i) {
-            i = map.get(s[j]) + 1
-        }
-        map.set(s[j], j)
-        maxLength = Math.max(maxLength, j - i + 1)
-    }
     return maxLength
+
+    // TODO 滑动窗口、哈希法
+    /*let map = new Map()
+    let maxLength = 0
+    for (let l = 0, r = 0; r < s.length; r++) {
+        if (map.has(s[r])) {
+            l = Math.max(l, map.get(s[r]) + 1)
+        }
+        maxLength = Math.max(maxLength, r - l + 1)
+        map.set(s[r], r)
+    }
+    return maxLength*/
 };
 //leetcode submit region end(Prohibit modification and deletion)
